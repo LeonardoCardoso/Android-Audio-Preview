@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -48,6 +49,7 @@ public class MainActivity extends ActionBarActivity {
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setOnBufferingUpdateListener(bufferingUpdateListener);
             mediaPlayer.setOnCompletionListener(completionListener);
+            mediaPlayer.setOnErrorListener(errorListener);
         }
     }
 
@@ -64,8 +66,6 @@ public class MainActivity extends ActionBarActivity {
         loading = (LinearLayout) findViewById(R.id.loading);
         songTitle = (TextView) findViewById(R.id.song_title);
         songArtist = (TextView) findViewById(R.id.song_artist);
-
-
     }
 
     private void setUpListeners() {
@@ -216,6 +216,17 @@ public class MainActivity extends ActionBarActivity {
             isPlaying = false;
             pause.setText(R.string.play);
             actionButton.setEnabled(true);
+        }
+    };
+
+
+    private MediaPlayer.OnErrorListener errorListener = new MediaPlayer.OnErrorListener() {
+        @Override
+        public boolean onError(MediaPlayer mediaPlayer, int i, int i2) {
+            Toast.makeText(getApplicationContext(), "We could stream song preview", Toast.LENGTH_SHORT).show();
+            releaseMediaPlayer();
+            slideDown();
+            return false;
         }
     };
 
