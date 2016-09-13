@@ -5,8 +5,6 @@ Developed by <a href='https://github.com/LeonardoCardoso' target='_blank'>@Leona
 
 A simple Android app to stream an audio by url for pre(view|listen)ing it.
 
-For more details, visit http://lab.leocardz.com/audio-preview
-
 ## Contact
 Contact me either by Twitter [@leocardz](https://twitter.com/leocardz) or emailing me to [contact@leocardz.com](mailto:contact@leocardz.com).
 
